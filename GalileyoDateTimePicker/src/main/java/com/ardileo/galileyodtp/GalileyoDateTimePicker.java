@@ -1,12 +1,15 @@
 package com.ardileo.galileyodtp;
 
+
 import android.app.Activity;
 import android.app.Dialog;
+import android.content.DialogInterface;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Point;
 import android.graphics.Rect;
+import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.ColorDrawable;
 import android.renderscript.Allocation;
 import android.renderscript.Element;
@@ -31,7 +34,6 @@ import java.util.Locale;
 
 import androidx.cardview.widget.CardView;
 import androidx.core.content.ContextCompat;
-
 /**
  * Created by Ardi Leo on 28/12/19
  * ardileyo@gmail.com
