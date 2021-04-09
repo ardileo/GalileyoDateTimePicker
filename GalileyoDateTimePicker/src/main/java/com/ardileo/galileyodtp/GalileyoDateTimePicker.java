@@ -9,7 +9,6 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Point;
 import android.graphics.Rect;
-import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.ColorDrawable;
 import android.renderscript.Allocation;
 import android.renderscript.Element;
@@ -34,6 +33,7 @@ import java.util.Locale;
 
 import androidx.cardview.widget.CardView;
 import androidx.core.content.ContextCompat;
+
 /**
  * Created by Ardi Leo on 28/12/19
  * ardileyo@gmail.com
@@ -64,6 +64,7 @@ public class GalileyoDateTimePicker implements View.OnClickListener {
     private DatePicker datePicker;
     private TimePicker timePicker;
     private OnSetListener onSetListener;
+    private DialogInterface.OnCancelListener onCancelListener;
     DisplaySize displaySize;
 
     public GalileyoDateTimePicker(Activity activity) {
@@ -75,7 +76,7 @@ public class GalileyoDateTimePicker implements View.OnClickListener {
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         dialog.getWindow().setWindowAnimations(android.R.style.Animation_Dialog);
         dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-//        dialog.create();
+        dialog.create();
         calendar_date = Calendar.getInstance(Locale.getDefault());
     }
 
@@ -198,6 +199,10 @@ public class GalileyoDateTimePicker implements View.OnClickListener {
             }
         });
 
+        if (onCancelListener != null) {
+            dialog.setOnCancelListener(onCancelListener);
+        }
+
         if (calendar_date_min != null) {
             datePicker.setMinDate(calendar_date_min.getTime().getTime());
         }
@@ -220,6 +225,11 @@ public class GalileyoDateTimePicker implements View.OnClickListener {
 
     public GalileyoDateTimePicker onSet(OnSetListener onSetListener) {
         this.onSetListener = onSetListener;
+        return this;
+    }
+
+    public GalileyoDateTimePicker onCancel(DialogInterface.OnCancelListener onCancelListener) {
+        this.onCancelListener = onCancelListener;
         return this;
     }
 
